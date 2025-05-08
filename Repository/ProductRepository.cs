@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using prog7311.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace prog7311.Repository
 {
@@ -10,66 +12,49 @@ namespace prog7311.Repository
 
         public void AddProduct(int farmerId, string name, string category, DateTime productionDate)
         {
-            using (var connection = new SQLiteConnection(ConnectionString))
+            using (var db = new AppDbContext())
             {
-                connection.Open();
-                var command = new SQLiteCommand("INSERT INTO Product (FarmerId, Name, Category, ProductionDate) VALUES (@FarmerId, @Name, @Category, @ProductionDate)", connection);
-                command.Parameters.AddWithValue("@FarmerId", farmerId);
-                command.Parameters.AddWithValue("@Name", name);
-                command.Parameters.AddWithValue("@Category", category);
-                command.Parameters.AddWithValue("@ProductionDate", productionDate.ToString("yyyy-MM-dd"));
-                command.ExecuteNonQuery();
+                var product = new Product { FarmerId = farmerId, Name = name, Category = category, ProductionDate = productionDate };
+                db.Products.Add(product);
+                db.SaveChanges();
             }
         }
 
         public void UpdateProduct(int id, int farmerId, string name, string category, DateTime productionDate)
         {
-            using (var connection = new SQLiteConnection(ConnectionString))
+            using (var db = new AppDbContext())
             {
-                connection.Open();
-                var command = new SQLiteCommand("UPDATE Product SET FarmerId = @FarmerId, Name = @Name, Category = @Category, ProductionDate = @ProductionDate WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", id);
-                command.Parameters.AddWithValue("@FarmerId", farmerId);
-                command.Parameters.AddWithValue("@Name", name);
-                command.Parameters.AddWithValue("@Category", category);
-                command.Parameters.AddWithValue("@ProductionDate", productionDate.ToString("yyyy-MM-dd"));
-                command.ExecuteNonQuery();
+                var product = db.Products.Find(id);
+                if (product != null)
+                {
+                    product.FarmerId = farmerId;
+                    product.Name = name;
+                    product.Category = category;
+                    product.ProductionDate = productionDate;
+                    db.SaveChanges();
+                }
             }
         }
 
         public void DeleteProduct(int id)
         {
-            using (var connection = new SQLiteConnection(ConnectionString))
+            using (var db = new AppDbContext())
             {
-                connection.Open();
-                var command = new SQLiteCommand("DELETE FROM Product WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", id);
-                command.ExecuteNonQuery();
+                var product = db.Products.Find(id);
+                if (product != null)
+                {
+                    db.Products.Remove(product);
+                    db.SaveChanges();
+                }
             }
         }
 
-        public List<(int Id, int FarmerId, string Name, string Category, DateTime ProductionDate)> GetAllProducts()
+        public List<Product> GetAllProducts()
         {
-            var products = new List<(int, int, string, string, DateTime)>();
-            using (var connection = new SQLiteConnection(ConnectionString))
+            using (var db = new AppDbContext())
             {
-                connection.Open();
-                var command = new SQLiteCommand("SELECT Id, FarmerId, Name, Category, ProductionDate FROM Product", connection);
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        products.Add((
-                            reader.GetInt32(0),
-                            reader.GetInt32(1),
-                            reader.GetString(2),
-                            reader.GetString(3),
-                            DateTime.Parse(reader.GetString(4))
-                        ));
-                    }
-                }
+                return db.Products.ToList();
             }
-            return products;
         }
     }
 } 

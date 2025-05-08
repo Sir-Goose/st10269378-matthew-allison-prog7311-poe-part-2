@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using prog7311.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace prog7311.Repository
 {
@@ -10,58 +12,48 @@ namespace prog7311.Repository
 
         public void AddEmployee(string name, string email, string password)
         {
-            using (var connection = new SQLiteConnection(ConnectionString))
+            using (var db = new AppDbContext())
             {
-                connection.Open();
-                var command = new SQLiteCommand("INSERT INTO Employee (Name, Email, Password) VALUES (@Name, @Email, @Password)", connection);
-                command.Parameters.AddWithValue("@Name", name);
-                command.Parameters.AddWithValue("@Email", email);
-                command.Parameters.AddWithValue("@Password", password);
-                command.ExecuteNonQuery();
+                var employee = new Employee { Name = name, Email = email, Password = password };
+                db.Employees.Add(employee);
+                db.SaveChanges();
             }
         }
 
         public void UpdateEmployee(int id, string name, string email, string password)
         {
-            using (var connection = new SQLiteConnection(ConnectionString))
+            using (var db = new AppDbContext())
             {
-                connection.Open();
-                var command = new SQLiteCommand("UPDATE Employee SET Name = @Name, Email = @Email, Password = @Password WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", id);
-                command.Parameters.AddWithValue("@Name", name);
-                command.Parameters.AddWithValue("@Email", email);
-                command.Parameters.AddWithValue("@Password", password);
-                command.ExecuteNonQuery();
+                var employee = db.Employees.Find(id);
+                if (employee != null)
+                {
+                    employee.Name = name;
+                    employee.Email = email;
+                    employee.Password = password;
+                    db.SaveChanges();
+                }
             }
         }
 
         public void DeleteEmployee(int id)
         {
-            using (var connection = new SQLiteConnection(ConnectionString))
+            using (var db = new AppDbContext())
             {
-                connection.Open();
-                var command = new SQLiteCommand("DELETE FROM Employee WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", id);
-                command.ExecuteNonQuery();
+                var employee = db.Employees.Find(id);
+                if (employee != null)
+                {
+                    db.Employees.Remove(employee);
+                    db.SaveChanges();
+                }
             }
         }
 
-        public List<(int Id, string Name, string Email)> GetAllEmployees()
+        public List<Employee> GetAllEmployees()
         {
-            var employees = new List<(int, string, string)>();
-            using (var connection = new SQLiteConnection(ConnectionString))
+            using (var db = new AppDbContext())
             {
-                connection.Open();
-                var command = new SQLiteCommand("SELECT Id, Name, Email FROM Employee", connection);
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        employees.Add((reader.GetInt32(0), reader.GetString(1), reader.GetString(2)));
-                    }
-                }
+                return db.Employees.ToList();
             }
-            return employees;
         }
     }
 } 

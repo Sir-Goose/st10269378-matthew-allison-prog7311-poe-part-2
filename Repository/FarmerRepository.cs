@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using prog7311.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace prog7311.Repository
 {
@@ -10,58 +12,48 @@ namespace prog7311.Repository
 
         public void AddFarmer(string name, string email, string password)
         {
-            using (var connection = new SQLiteConnection(ConnectionString))
+            using (var db = new AppDbContext())
             {
-                connection.Open();
-                var command = new SQLiteCommand("INSERT INTO Farmer (Name, Email, Password) VALUES (@Name, @Email, @Password)", connection);
-                command.Parameters.AddWithValue("@Name", name);
-                command.Parameters.AddWithValue("@Email", email);
-                command.Parameters.AddWithValue("@Password", password);
-                command.ExecuteNonQuery();
+                var farmer = new Farmer { Name = name, Email = email, Password = password };
+                db.Farmers.Add(farmer);
+                db.SaveChanges();
             }
         }
 
         public void UpdateFarmer(int id, string name, string email, string password)
         {
-            using (var connection = new SQLiteConnection(ConnectionString))
+            using (var db = new AppDbContext())
             {
-                connection.Open();
-                var command = new SQLiteCommand("UPDATE Farmer SET Name = @Name, Email = @Email, Password = @Password WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", id);
-                command.Parameters.AddWithValue("@Name", name);
-                command.Parameters.AddWithValue("@Email", email);
-                command.Parameters.AddWithValue("@Password", password);
-                command.ExecuteNonQuery();
+                var farmer = db.Farmers.Find(id);
+                if (farmer != null)
+                {
+                    farmer.Name = name;
+                    farmer.Email = email;
+                    farmer.Password = password;
+                    db.SaveChanges();
+                }
             }
         }
 
         public void DeleteFarmer(int id)
         {
-            using (var connection = new SQLiteConnection(ConnectionString))
+            using (var db = new AppDbContext())
             {
-                connection.Open();
-                var command = new SQLiteCommand("DELETE FROM Farmer WHERE Id = @Id", connection);
-                command.Parameters.AddWithValue("@Id", id);
-                command.ExecuteNonQuery();
+                var farmer = db.Farmers.Find(id);
+                if (farmer != null)
+                {
+                    db.Farmers.Remove(farmer);
+                    db.SaveChanges();
+                }
             }
         }
 
-        public List<(int Id, string Name, string Email)> GetAllFarmers()
+        public List<Farmer> GetAllFarmers()
         {
-            var farmers = new List<(int, string, string)>();
-            using (var connection = new SQLiteConnection(ConnectionString))
+            using (var db = new AppDbContext())
             {
-                connection.Open();
-                var command = new SQLiteCommand("SELECT Id, Name, Email FROM Farmer", connection);
-                using (var reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        farmers.Add((reader.GetInt32(0), reader.GetString(1), reader.GetString(2)));
-                    }
-                }
+                return db.Farmers.ToList();
             }
-            return farmers;
         }
     }
 } 
