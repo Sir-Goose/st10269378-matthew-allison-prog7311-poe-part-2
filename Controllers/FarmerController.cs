@@ -23,28 +23,41 @@ namespace prog7311.Controllers
         {
             if (Request.Cookies["UserRole"] != "Employee")
                 return RedirectToAction("Login", "Account");
-            return View();
+            return View(new Farmer());
         }
 
         [HttpPost]
-        public IActionResult Add(string name, string email, string password)
+        public IActionResult Add(Farmer model)
         {
             if (Request.Cookies["UserRole"] != "Employee")
                 return RedirectToAction("Login", "Account");
-            using (var db = new AppDbContext())
+            if (!ModelState.IsValid)
             {
-                if (!db.Farmers.Any(f => f.Email == email))
+                return View(model);
+            }
+            try
+            {
+                using (var db = new AppDbContext())
                 {
-                    db.Farmers.Add(new Farmer { Name = name, Email = email, Password = password });
-                    db.SaveChanges();
-                    ViewBag.Success = true;
-                }
-                else
-                {
-                    ViewBag.Error = "A farmer with this email already exists.";
+                    if (!db.Farmers.Any(f => f.Email == model.Email))
+                    {
+                        db.Farmers.Add(model);
+                        db.SaveChanges();
+                        ViewBag.Success = true;
+                        return View(new Farmer());
+                    }
+                    else
+                    {
+                        ViewBag.Error = "A farmer with this email already exists.";
+                        return View(model);
+                    }
                 }
             }
-            return View();
+            catch
+            {
+                ModelState.AddModelError("", "An unexpected error occurred. Please try again.");
+                return View(model);
+            }
         }
     }
 } 
