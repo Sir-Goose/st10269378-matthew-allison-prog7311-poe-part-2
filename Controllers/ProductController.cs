@@ -41,5 +41,42 @@ namespace prog7311.Controllers
             }
             return RedirectToAction("Add", new { success = true });
         }
+
+        public IActionResult ListByFarmer(int farmerId)
+        {
+            if (Request.Cookies["UserRole"] != "Employee")
+                return RedirectToAction("Login", "Account");
+            using (var db = new AppDbContext())
+            {
+                var farmer = db.Farmers.FirstOrDefault(f => f.Id == farmerId);
+                if (farmer == null) return NotFound();
+                var products = db.Products.Where(p => p.FarmerId == farmerId).ToList();
+                ViewBag.Farmer = farmer;
+                return View(products);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Search(string name, string category, int? farmerId)
+        {
+            if (Request.Cookies["UserRole"] != "Employee")
+                return RedirectToAction("Login", "Account");
+            using (var db = new AppDbContext())
+            {
+                var farmers = db.Farmers.ToList();
+                var products = db.Products.AsQueryable();
+                if (!string.IsNullOrEmpty(name))
+                    products = products.Where(p => p.Name.Contains(name));
+                if (!string.IsNullOrEmpty(category))
+                    products = products.Where(p => p.Category.Contains(category));
+                if (farmerId.HasValue)
+                    products = products.Where(p => p.FarmerId == farmerId.Value);
+                ViewBag.Farmers = farmers;
+                ViewBag.SelectedFarmerId = farmerId;
+                ViewBag.Name = name;
+                ViewBag.Category = category;
+                return View(products.ToList());
+            }
+        }
     }
 } 

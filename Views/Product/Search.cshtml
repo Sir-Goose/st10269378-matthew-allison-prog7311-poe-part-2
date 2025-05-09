@@ -1,0 +1,60 @@
+@model IEnumerable<prog7311.Models.Product>
+@{
+    ViewData["Title"] = "Search Products - Agri-Energy Connect";
+    var farmers = ViewBag.Farmers as List<prog7311.Models.Farmer>;
+    int? selectedFarmerId = ViewBag.SelectedFarmerId as int?;
+    string name = ViewBag.Name as string;
+    string category = ViewBag.Category as string;
+}
+
+<h2 class="text-center mt-4">Search Products</h2>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+        <form asp-action="Search" method="get" class="mb-4">
+            <div class="row g-2 align-items-end">
+                <div class="col-md-3">
+                    <label for="name" class="form-label">Product Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="@name" />
+                </div>
+                <div class="col-md-3">
+                    <label for="category" class="form-label">Category</label>
+                    <input type="text" class="form-control" id="category" name="category" value="@category" />
+                </div>
+                <div class="col-md-3">
+                    <label for="farmerId" class="form-label">Farmer</label>
+                    <select class="form-select" id="farmerId" name="farmerId">
+                        <option value="">All</option>
+                        @foreach (var farmer in farmers)
+                        {
+                            <option value="@farmer.Id" @(selectedFarmerId == farmer.Id ? "selected" : "")>@farmer.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary w-100">Search</button>
+                </div>
+            </div>
+        </form>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Production Date</th>
+                    <th>Farmer</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Category</td>
+                        <td>@product.ProductionDate.ToString("yyyy-MM-dd")</td>
+                        <td>@farmers.FirstOrDefault(f => f.Id == product.FarmerId)?.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div> 
