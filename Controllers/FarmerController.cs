@@ -1,21 +1,25 @@
 using Microsoft.AspNetCore.Mvc;
-using prog7311.Repository;
+using prog7311.Services;
 using prog7311.Models;
-using System.Linq;
 
 namespace prog7311.Controllers
 {
     public class FarmerController : Controller
     {
+        private readonly IFarmerService _farmerService;
+
+        public FarmerController(IFarmerService farmerService)
+        {
+            _farmerService = farmerService;
+        }
+
         public IActionResult List()
         {
             if (Request.Cookies["UserRole"] != "Employee")
                 return RedirectToAction("Login", "Account");
-            using (var db = new AppDbContext())
-            {
-                var farmers = db.Farmers.ToList();
-                return View(farmers);
-            }
+
+            var farmers = _farmerService.GetAllFarmers();
+            return View(farmers);
         }
 
         [HttpGet]
@@ -31,33 +35,21 @@ namespace prog7311.Controllers
         {
             if (Request.Cookies["UserRole"] != "Employee")
                 return RedirectToAction("Login", "Account");
+
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-            try
+
+            var (success, message) = _farmerService.AddFarmer(model);
+            if (success)
             {
-                using (var db = new AppDbContext())
-                {
-                    if (!db.Farmers.Any(f => f.Email == model.Email))
-                    {
-                        db.Farmers.Add(model);
-                        db.SaveChanges();
-                        ViewBag.Success = true;
-                        return View(new Farmer());
-                    }
-                    else
-                    {
-                        ViewBag.Error = "A farmer with this email already exists.";
-                        return View(model);
-                    }
-                }
+                ViewBag.Success = true;
+                return View(new Farmer());
             }
-            catch
-            {
-                ModelState.AddModelError("", "An unexpected error occurred. Please try again.");
-                return View(model);
-            }
+            
+            ViewBag.Error = message;
+            return View(model);
         }
     }
 } 

@@ -26,7 +26,14 @@
                         <option value="">All</option>
                         @foreach (var farmer in farmers)
                         {
-                            <option value="@farmer.Id" @(selectedFarmerId == farmer.Id ? "selected" : "")>@farmer.Name</option>
+                            if (selectedFarmerId == farmer.Id)
+                            {
+                                <option value="@farmer.Id" selected>@farmer.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@farmer.Id">@farmer.Name</option>
+                            }
                         }
                     </select>
                 </div>
@@ -57,4 +64,4 @@
             </tbody>
         </table>
     </div>
-</div> 
+</div>
