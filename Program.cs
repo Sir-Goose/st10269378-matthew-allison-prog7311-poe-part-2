@@ -1,3 +1,6 @@
+using prog7311.Repository;
+using prog7311.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
