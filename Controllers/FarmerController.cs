@@ -44,8 +44,8 @@ namespace prog7311.Controllers
             var (success, message) = _farmerService.AddFarmer(model);
             if (success)
             {
-                ViewBag.Success = true;
-                return View(new Farmer());
+                TempData["Success"] = "Farmer added successfully!";
+                return RedirectToAction("List");
             }
             
             ViewBag.Error = message;
