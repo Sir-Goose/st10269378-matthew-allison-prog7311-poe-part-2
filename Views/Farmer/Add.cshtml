@@ -6,16 +6,11 @@
 <h2 class="text-center mt-4">Add New Farmer</h2>
 <div class="row justify-content-center mt-5">
     <div class="col-md-6">
-        @if (ViewBag.Success != null && ViewBag.Success == true)
-        {
-            <div class="alert alert-success text-center">Farmer added successfully!</div>
-        }
         @if (ViewBag.Error != null)
         {
             <div class="alert alert-danger text-center">@ViewBag.Error</div>
         }
-        @using (Html.BeginForm())
-        {
+        <form asp-controller="Farmer" asp-action="Add" method="post">
             @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
             <div class="form-group mb-3">
                 <label asp-for="Name"></label>
@@ -33,6 +28,6 @@
                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
             </div>
             <button type="submit" class="btn btn-success w-100">Add Farmer</button>
-        }
+        </form>
     </div>
 </div> 

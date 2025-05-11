@@ -33,11 +33,26 @@ namespace prog7311.Controllers
         [HttpPost]
         public IActionResult Add(Farmer model)
         {
+            Console.WriteLine("HELLO");
             if (Request.Cookies["UserRole"] != "Employee")
                 return RedirectToAction("Login", "Account");
 
             if (!ModelState.IsValid)
             {
+                Console.WriteLine("POST Add: ModelState is INVALID.");
+                foreach (var key in ModelState.Keys)
+                {
+                    var state = ModelState[key];
+                    if (state.Errors.Any())
+                    {
+                        Console.WriteLine($"  Field: {key}");
+                        foreach (var error in state.Errors)
+                        {
+                            Console.WriteLine($"    Error: {error.ErrorMessage}");
+                        }
+                    }
+                }
+                ViewBag.Error = "Validation failed. Please check the input fields and error messages.";
                 return View(model);
             }
 

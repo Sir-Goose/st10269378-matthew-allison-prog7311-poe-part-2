@@ -16,5 +16,10 @@ namespace prog7311.Models
         [StringLength(100, MinimumLength = 6)]
         public string Password { get; set; }
         public ICollection<Product> Products { get; set; }
+
+        public Farmer()
+        {
+            Products = new List<Product>(); 
+        }
     }
-} 
+}
