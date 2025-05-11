@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using prog7311.Services;
 using prog7311.Models;
 using System;
+using System.Linq;
 
 namespace prog7311.Controllers
 {
@@ -54,16 +55,26 @@ namespace prog7311.Controllers
             return View();
         }
 
-        public IActionResult ListByFarmer(int farmerId)
+        public IActionResult ListByFarmer(int farmerId, DateTime? startDate, DateTime? endDate, string category)
         {
             if (Request.Cookies["UserRole"] != "Employee")
                 return RedirectToAction("Login", "Account");
 
-            var farmer = _farmerService.GetFarmerByEmail(Request.Cookies["UserEmail"]);
+            var farmer = _farmerService.GetAllFarmers().FirstOrDefault(f => f.Id == farmerId);
             if (farmer == null) return NotFound();
 
             var products = _productService.GetProductsByFarmer(farmerId);
+            if (startDate.HasValue)
+                products = products.Where(p => p.ProductionDate >= startDate.Value).ToList();
+            if (endDate.HasValue)
+                products = products.Where(p => p.ProductionDate <= endDate.Value).ToList();
+            if (!string.IsNullOrEmpty(category))
+                products = products.Where(p => p.Category == category).ToList();
+
             ViewBag.Farmer = farmer;
+            ViewBag.StartDate = startDate?.ToString("yyyy-MM-dd");
+            ViewBag.EndDate = endDate?.ToString("yyyy-MM-dd");
+            ViewBag.Category = category;
             return View(products);
         }
 

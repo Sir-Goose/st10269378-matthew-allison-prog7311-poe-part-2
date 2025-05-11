@@ -7,6 +7,28 @@
 <h2 class="text-center mt-4">Products by @farmer?.Name</h2>
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
+        <form method="get" class="mb-4">
+            <input type="hidden" name="farmerId" value="@farmer?.Id" />
+            <div class="row g-2 align-items-end">
+                <div class="col-md-4">
+                    <label for="startDate" class="form-label">Start Date</label>
+                    <input type="date" class="form-control" id="startDate" name="startDate" value="@ViewBag.StartDate" />
+                </div>
+                <div class="col-md-4">
+                    <label for="endDate" class="form-label">End Date</label>
+                    <input type="date" class="form-control" id="endDate" name="endDate" value="@ViewBag.EndDate" />
+                </div>
+                <div class="col-md-4">
+                    <label for="category" class="form-label">Category</label>
+                    <input type="text" class="form-control" id="category" name="category" value="@ViewBag.Category" placeholder="e.g. Meat, Fruit" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12 text-end">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+            </div>
+        </form>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
