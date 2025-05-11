@@ -47,7 +47,7 @@ namespace prog7311.Controllers
             var (success, message) = _productService.AddProduct(product);
             if (success)
             {
-                return RedirectToAction("Add", new { success = true });
+                return RedirectToAction("MyProducts");
             }
 
             ViewBag.Error = message;
@@ -81,6 +81,20 @@ namespace prog7311.Controllers
             ViewBag.Name = name;
             ViewBag.Category = category;
             return View(products);
+        }
+
+        [HttpGet]
+        public IActionResult MyProducts()
+        {
+            if (Request.Cookies["UserRole"] != "Farmer" || string.IsNullOrEmpty(Request.Cookies["UserEmail"]))
+                return RedirectToAction("Login", "Account");
+
+            var farmer = _farmerService.GetFarmerByEmail(Request.Cookies["UserEmail"]);
+            if (farmer == null) return RedirectToAction("Login", "Account");
+
+            var products = _productService.GetProductsByFarmer(farmer.Id);
+            ViewBag.Farmer = farmer;
+            return View("ListByFarmer", products);
         }
     }
 } 
