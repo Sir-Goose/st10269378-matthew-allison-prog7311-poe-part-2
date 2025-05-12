@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var isLoggedIn = Context.Request.Cookies["UserEmail"] != null;
 }
 
 <div class="d-flex flex-column justify-content-center align-items-center" style="min-height: 70vh;">
@@ -7,5 +8,8 @@
     <p class="lead mb-5 text-center" style="max-width: 600px;">
         Connect farmers and employees, manage products, and streamline your agri-business experience.
     </p>
-    <a href="/Account/Login" class="btn btn-lg btn-success px-5 py-3" style="font-size: 1.5rem;">Login</a>
+    @if (!isLoggedIn)
+    {
+        <a href="/Account/Login" class="btn btn-lg btn-success px-5 py-3" style="font-size: 1.5rem;">Login</a>
+    }
 </div>
