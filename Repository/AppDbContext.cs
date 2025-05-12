@@ -27,19 +27,19 @@ namespace prog7311.Repository
                 // Employees
                 Employees.AddRange(new[]
                 {
-                    new Employee { Name = "Sipho Dlamini", Email = "sipho.dlamini@example.com", Password = "password1" },
-                    new Employee { Name = "Annelize van der Merwe", Email = "annelize.vdmerwe@example.com", Password = "password2" }
+                    new Employee { Name = "Clive Frankland", Email = "clive.frankland@example.com", Password = "password1" },
+                    new Employee { Name = "Matthew Allison", Email = "matthew.alison@example.com", Password = "password2" }
                 });
                 SaveChanges();
 
                 // Farmers
                 var farmers = new[]
                 {
-                    new Farmer { Name = "Johan Botha", Email = "johan.botha@example.com", Password = "boer123" },
-                    new Farmer { Name = "Thandiwe Mokoena", Email = "thandiwe.mokoena@example.com", Password = "plaas456" },
-                    new Farmer { Name = "Pieter van Wyk", Email = "pieter.vanwyk@example.com", Password = "landbou789" },
-                    new Farmer { Name = "Elsabe du Toit", Email = "elsabe.dutoit@example.com", Password = "groente321" },
-                    new Farmer { Name = "Mpho Nkosi", Email = "mpho.nkosi@example.com", Password = "vars654" }
+                    new Farmer { Name = "Joshua Shields", Email = "joshua.shields@example.com", Password = "boer123" },
+                    new Farmer { Name = "Kashvir Sewpersad", Email = "kashvir.sewpersad@example.com", Password = "plaas456" },
+                    new Farmer { Name = "Erin Steenveld", Email = "erin.steenveld@example.com", Password = "landbou789" },
+                    new Farmer { Name = "Luke Carolus", Email = "luke.carolus@example.com", Password = "groente321" },
+                    new Farmer { Name = "Rudolf Holzhausen", Email = "rudolf.holzhausen@example.com", Password = "vars654" }
                 };
                 Farmers.AddRange(farmers);
                 SaveChanges();

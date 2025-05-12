@@ -6,11 +6,11 @@
 <div class="d-flex flex-column justify-content-center align-items-center" style="min-height: 70vh;">
     <img src="/home.png" alt="Agri-Energy Connect Logo" width="228" height="228" class="mb-4" />
     <h1 class="display-3 mb-4">Welcome to Agri-Energy Connect</h1>
-    <p class="lead mb-5 text-center" style="max-width: 600px;">
-        Login to get started.
-    </p>
     @if (!isLoggedIn)
     {
+        <p class="lead mb-5 text-center" style="max-width: 600px;">
+            Login to get started.
+        </p>
         <a href="/Account/Login" class="btn btn-lg btn-success px-5 py-3" style="font-size: 1.5rem;">Login</a>
     }
 </div>
