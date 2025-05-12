@@ -52,7 +52,7 @@ namespace prog7311.Controllers
                         }
                     }
                 }
-                ViewBag.Error = "Validation failed. Please check the input fields and error messages.";
+                ViewBag.Error = "Validation failed.";
                 return View(model);
             }
 

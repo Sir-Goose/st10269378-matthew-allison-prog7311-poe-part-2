@@ -1,12 +1,5 @@
-/*
-  Agri-Energy Connect - Studio Ghibli Inspired Theme
-  Date: 2025-05-11
-*/
-
-/* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Mulish:wght@400;600;700&display=swap");
 
-/* --- Global Resets & Defaults --- */
 html {
   font-size: 14px;
   position: relative;
@@ -22,13 +15,12 @@ html {
 
 body {
   font-family: "Mulish", sans-serif;
-  background-color: #fdf5e6; /* Old Lace - warm off-white */
-  color: #4a442d; /* Dark Olive Green/Brown - earthy text */
-  margin-bottom: 80px; /* Space for the footer */
+  background-color: #fdf5e6;
+  color: #4a442d;
+  margin-bottom: 80px;
   line-height: 1.6;
 }
 
-/* --- Typography --- */
 h1,
 h2,
 h3,
@@ -37,13 +29,13 @@ h5,
 h6 {
   font-family: "Amatic SC", cursive;
   font-weight: 700;
-  color: #5c4033; /* Dark Brown - for headings */
+  color: #5c4033;
   margin-bottom: 0.75rem;
   line-height: 1.2;
 }
 
 h1 {
-  font-size: 3rem; /* Larger for Amatic SC */
+  font-size: 3rem;
 }
 h2 {
   font-size: 2.5rem;
@@ -57,45 +49,44 @@ p {
 }
 
 a {
-  color: #5f9ea0; /* Cadet Blue - gentle link color */
+  color: #5f9ea0;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: #4682b4; /* Steel Blue - slightly darker on hover */
+  color: #4682b4;
   text-decoration: underline;
 }
 
 .lead {
   font-size: 1.25rem;
   font-weight: 400;
-  color: #605840; /* Softer than main text */
+  color: #605840;
 }
 
-/* --- Navigation --- */
 .navbar {
-  background-color: #8fbc8f !important; /* Dark Sea Green - calming, natural */
-  border-bottom: 2px solid #7aa97a; /* Slightly darker green for depth */
+  background-color: #8fbc8f !important;
+  border-bottom: 2px solid #7aa97a;
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
 }
 
 .navbar-brand {
   font-family: "Amatic SC", cursive;
-  font-size: 2.2rem !important; /* Prominent brand name */
-  color: #ffffff !important; /* White for contrast */
+  font-size: 2.2rem !important;
+  color: #ffffff !important;
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }
 
 .navbar-brand:hover {
-  color: #f0fff0 !important; /* Honeydew - very light green on hover */
+  color: #f0fff0 !important;
 }
 
 .nav-link {
-  color: #ffffff !important; /* White for nav links */
+  color: #ffffff !important;
   font-weight: 600;
   font-size: 1.1rem;
   margin-right: 0.5rem;
@@ -104,7 +95,7 @@ a:hover {
 
 .nav-link:hover,
 .nav-link.active {
-  color: #f0fff0 !important; /* Honeydew on hover/active */
+  color: #f0fff0 !important;
 }
 
 .navbar-toggler {
@@ -115,18 +106,15 @@ a:hover {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* User info in navbar */
-.navbar-nav .nav-link span.nav-link { /* Target the span specifically if it's styled as a nav-link */
-  color: #f0fff0 !important; /* Honeydew for user email/role */
+.navbar-nav .nav-link span.nav-link {
+  color: #f0fff0 !important;
   font-size: 0.9rem;
 }
 
-
-/* --- Buttons --- */
 .btn {
-  font-family: "Mulish", sans-serif; /* Body font for buttons for readability */
+  font-family: "Mulish", sans-serif;
   font-weight: 600;
-  border-radius: 8px; /* Softer, rounded corners */
+  border-radius: 8px;
   padding: 0.6rem 1.2rem;
   transition: all 0.3s ease;
   border: 1px solid transparent;
@@ -139,8 +127,8 @@ a:hover {
 }
 
 .btn-primary {
-  background-color: #6b8e23; /* Olive Drab */
-  border-color: #556b2f; /* Dark Olive Green */
+  background-color: #6b8e23;
+  border-color: #556b2f;
   color: #ffffff;
 }
 
@@ -151,9 +139,9 @@ a:hover {
 }
 
 .btn-success {
-  background-color: #90ee90; /* Light Green */
+  background-color: #90ee90;
   border-color: #7fdd7f;
-  color: #2e452e; /* Darker green text for readability */
+  color: #2e452e;
 }
 
 .btn-success:hover {
@@ -163,7 +151,7 @@ a:hover {
 }
 
 .btn-danger {
-  background-color: #cd5c5c; /* Indian Red */
+  background-color: #cd5c5c;
   border-color: #b84c4c;
   color: #ffffff;
 }
@@ -174,17 +162,15 @@ a:hover {
   color: #ffffff;
 }
 
-/* Focus states for accessibility */
 .btn:focus,
 .btn:active:focus,
 .form-control:focus,
 .form-select:focus,
 .form-check-input:focus {
   outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(95, 158, 160, 0.3); /* Cadet Blue with transparency */
+  box-shadow: 0 0 0 0.2rem rgba(95, 158, 160, 0.3);
 }
 
-/* --- Forms --- */
 .form-group {
   margin-bottom: 1.5rem;
 }
@@ -192,65 +178,63 @@ a:hover {
 .form-label,
 label {
   font-weight: 600;
-  color: #5c4033; /* Dark Brown */
+  color: #5c4033;
   margin-bottom: 0.5rem;
   display: block;
 }
 
 .form-control,
 .form-select {
-  background-color: #fff8dc; /* Cornsilk - soft input background */
-  border: 1px solid #d2b48c; /* Tan - natural border */
-  border-radius: 6px; /* Slightly rounded */
+  background-color: #fff8dc;
+  border: 1px solid #d2b48c;
+  border-radius: 6px;
   padding: 0.5rem 0.75rem;
-  color: #4a442d; /* Earthy text color */
+  color: #4a442d;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-control:focus,
 .form-select:focus {
-  border-color: #8fbc8f; /* Dark Sea Green - focus border */
+  border-color: #8fbc8f;
   background-color: #ffffff;
 }
 
 input[type="date"].form-control {
-  line-height: normal; /* Ensure date input looks okay */
+  line-height: normal;
 }
 
-/* --- Tables --- */
 .table {
-  border: 1px solid #d2b48c; /* Tan border */
-  border-radius: 8px; /* Rounded corners for the table */
-  overflow: hidden; /* To make border-radius work with th/td */
+  border: 1px solid #d2b48c;
+  border-radius: 8px;
+  overflow: hidden;
   margin-top: 1rem;
-  background-color: #fffdf5; /* Very light cream for table background */
+  background-color: #fffdf5;
 }
 
 .table th,
 .table td {
   padding: 0.85rem 1rem;
   vertical-align: middle;
-  border-top: 1px solid #e0d8c8; /* Lighter tan for inner borders */
+  border-top: 1px solid #e0d8c8;
 }
 
 .table thead th {
-  background-color: #a0c0a0; /* Muted, earthy green for headers */
-  color: #4a442d; /* Dark Olive/Brown text */
-  border-bottom: 2px solid #8fbc8f; /* Dark Sea Green border for header bottom */
-  font-family: "Mulish", sans-serif; /* More readable font for table headers */
+  background-color: #a0c0a0;
+  color: #4a442d;
+  border-bottom: 2px solid #8fbc8f;
+  font-family: "Mulish", sans-serif;
   font-weight: 700;
   text-align: left;
 }
 
 .table tbody tr:nth-of-type(even) {
-  background-color: #f9f5ed; /* Slightly different shade for striped rows */
+  background-color: #f9f5ed;
 }
 
 .table tbody tr:hover {
-  background-color: #f0eada; /* Soft hover effect for rows */
+  background-color: #f0eada;
 }
 
-/* --- Alerts --- */
 .alert {
   border-radius: 8px;
   padding: 1rem 1.25rem;
@@ -260,55 +244,50 @@ input[type="date"].form-control {
 }
 
 .alert-success {
-  background-color: #e0f2e0; /* Pale green background */
-  border-color: #98fb98; /* Light Green border */
-  color: #2e8b57; /* Sea Green text */
+  background-color: #e0f2e0;
+  border-color: #98fb98;
+  color: #2e8b57;
 }
 
 .alert-danger {
-  background-color: #fde0e0; /* Pale red background */
-  border-color: #f08080; /* Light Coral border */
-  color: #8b0000; /* Dark Red text */
+  background-color: #fde0e0;
+  border-color: #f08080;
+  color: #8b0000;
 }
 
-/* --- Footer --- */
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #e0e0d1; /* Light, earthy gray-beige */
-  color: #5c4033; /* Dark Brown text */
-  padding: 1.5rem 0; /* More padding than line-height */
+  background-color: #e0e0d1;
+  color: #5c4033;
+  padding: 1.5rem 0;
   text-align: center;
   font-size: 0.9rem;
-  border-top: 2px solid #c8c8b9; /* Slightly darker border */
+  border-top: 2px solid #c8c8b9;
 }
 
-/* --- Utilities & Overrides --- */
 .box-shadow {
-  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.08) !important; /* Softer shadow */
+  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.08) !important;
 }
 
 .border-top {
-  border-top: 1px solid #d2b48c !important; /* Tan border */
+  border-top: 1px solid #d2b48c !important;
 }
 
 .border-bottom {
-  border-bottom: 1px solid #d2b48c !important; /* Tan border */
+  border-bottom: 1px solid #d2b48c !important;
 }
 
-/* Specific styling for home page hero if needed */
 .display-3 {
-  color: #4a3b2a; /* A deep, warm brown for the main welcome */
+  color: #4a3b2a;
 }
 
-/* Ensure container has some padding */
 .container {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
-/* Ensure main content area has enough space above the footer */
 main.pb-3 {
-  padding-bottom: 3rem !important; /* Ensure enough space above the footer */
+  padding-bottom: 3rem !important;
 }

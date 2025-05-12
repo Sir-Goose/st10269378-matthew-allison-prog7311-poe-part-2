@@ -37,7 +37,7 @@ namespace prog7311.Services
             }
             catch
             {
-                return (false, "An unexpected error occurred. Please try again.");
+                return (false, "An error occurred.");
             }
         }
     }

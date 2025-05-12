@@ -31,7 +31,6 @@ namespace prog7311.Services
 
         public void Logout()
         {
-            // This is a no-op as the actual cookie deletion is handled by the controller
         }
     }
 } 
