@@ -7,7 +7,7 @@
 
 ## Link to Repo
 
-`https://github.com/Sir-Goose/st10269378-matthew-allison-prog7311-poe-part-2/blob/master/README.md`
+`https://github.com/Sir-Goose/st10269378-matthew-allison-prog7311-poe-part-2/`
 
 ## Dependencies
 
