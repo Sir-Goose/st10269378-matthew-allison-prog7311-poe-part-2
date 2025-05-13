@@ -99,3 +99,11 @@ The application will start and be accessible at `https://localhost:<some port>` 
 - StephenWalther (2022). ASP.NET MVC Controller Overview (C#). [online] learn.microsoft.com. Available at: https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/controllers-and-routing/aspnet-mvc-controllers-overview-cs.
 - tdykstra (2024). Introduction to Razor Pages in ASP.NET Core. [online] Microsoft.com. Available at: https://learn.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-9.0&tabs=visual-studio.
 - W3Schools (2019). HTML CSS. [online] W3schools.com. Available at: https://www.w3schools.com/html/html_css.asp.
+
+## AI Decleration
+
+AI tools were used to assist with completing the project. Code was not directly copy pasted but rather AI was used to inform on how to do specific things such as only displaying certain html elements on a razor page under certain conditions. 
+
+Below are screenshots of chats with AI models. All AI usage was with GPT-4.1 and GPTImageGen
+
+
