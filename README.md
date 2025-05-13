@@ -85,3 +85,13 @@ The application will start and be accessible at `https://localhost:<some port>` 
 - Make sure you have the correct .NET SDK version installed.
 - If you change the database schema, delete `app.db` to reset.
 
+## References
+
+- ardalis (2024). Overview of ASP.NET Core MVC. [online] Microsoft.com. Available at: https://learn.microsoft.com/en-gb/aspnet/core/mvc/overview?view=aspnetcore-9.0&WT.mc_id=dotnet-35129-website.
+- BillWagner (2023). Interfaces - define behavior for multiple types. [online] learn.microsoft.com. Available at: https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces.
+- bricelam (2020). SQLite Database Provider - EF Core. [online] learn.microsoft.com. Available at: https://learn.microsoft.com/en-us/ef/core/providers/sqlite/?tabs=dotnet-core-cli.
+- Rick-Anderson (2022). HTTP Cookies in ASP.NET Web API - ASP.NET 4.x. [online] learn.microsoft.com. Available at: https://learn.microsoft.com/en-us/aspnet/web-api/overview/advanced/http-cookies.
+- Rick-Anderson (2025). Getting Started - EF Core. [online] learn.microsoft.com. Available at: https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli.
+- StephenWalther (2022). ASP.NET MVC Controller Overview (C#). [online] learn.microsoft.com. Available at: https://learn.microsoft.com/en-us/aspnet/mvc/overview/older-versions-1/controllers-and-routing/aspnet-mvc-controllers-overview-cs.
+- tdykstra (2024). Introduction to Razor Pages in ASP.NET Core. [online] Microsoft.com. Available at: https://learn.microsoft.com/en-us/aspnet/core/razor-pages/?view=aspnetcore-9.0&tabs=visual-studio.
+- W3Schools (2019). HTML CSS. [online] W3schools.com. Available at: https://www.w3schools.com/html/html_css.asp.
