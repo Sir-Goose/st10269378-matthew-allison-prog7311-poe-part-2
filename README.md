@@ -5,6 +5,10 @@
 
 # Agri-Energy Connect
 
+## Link to Repo
+
+`https://github.com/Sir-Goose/st10269378-matthew-allison-prog7311-poe-part-2/blob/master/README.md`
+
 ## Dependencies
 
 - [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
