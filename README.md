@@ -66,7 +66,7 @@ The application will start and be accessible at `https://localhost:<some port>` 
 
 ### 7. Database
 
-- The app uses SQLite (`app.db`) and will auto-create and seed the database on first run.
+- The app uses SQLite (`app.db`) and will automatically create and seed the database on first run.
 - Default users are seeded for both employees and farmers.
 
 
