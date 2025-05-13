@@ -106,4 +106,19 @@ AI tools were used to assist with completing the project. Code was not directly 
 
 Below are screenshots of chats with AI models. All AI usage was with GPT-4.1 and GPTImageGen
 
+![Screenshot 2025-05-13 at 20 11 37](https://github.com/user-attachments/assets/6eb2f283-2f9e-44b0-807c-14adfd735ecf)
+![Screenshot 2025-05-13 at 20 12 13](https://github.com/user-attachments/assets/b0365c41-4144-4508-8634-01e47d52048a)
+![Screenshot 2025-05-13 at 20 12 17](https://github.com/user-attachments/assets/6b3b1abe-34ff-4abe-bdce-ccde1e3c3bb4)
+![Screenshot 2025-05-13 at 20 12 35](https://github.com/user-attachments/assets/3320454e-e02c-47f1-8770-dff4ae949547)
+![Screenshot 2025-05-13 at 20 12 40](https://github.com/user-attachments/assets/69908832-69a6-4862-bec5-0e92d0c2306d)
+![Screenshot 2025-05-13 at 20 13 14](https://github.com/user-attachments/assets/7cf54cec-ad43-4e23-9574-c315f534a3c3)
+![Screenshot 2025-05-13 at 20 13 18](https://github.com/user-attachments/assets/55e78aca-21d2-4132-bf1e-0eda003ef88f)
+![Screenshot 2025-05-13 at 20 14 29](https://github.com/user-attachments/assets/4f112545-12de-4a56-a65c-b3a81722fd9c)
+![Screenshot 2025-05-13 at 20 14 31](https://github.com/user-attachments/assets/3dfcd16a-10e8-4a5c-b661-0e6952c60b90)
+
+
+
+
+
+
 
